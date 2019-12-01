@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import {CognitoAuth, CognitoAuthOptions, CognitoAuthSession} from 'amazon-cognito-auth-js';
+import {CognitoAuth} from 'amazon-cognito-auth-js';
 import { config as AWSConfig } from 'aws-sdk'
 import Loading from './Loading';
 import Login from './Login';

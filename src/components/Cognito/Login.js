@@ -1,6 +1,6 @@
 import React from "react";
 import { useCognito } from "./react-cognito-spa";
-
+import Cover from "../../images/cover.png";
 import { Button } from "react-bootstrap";
 
 const Login = () => {
@@ -12,6 +12,9 @@ const Login = () => {
     <div className="overlay">
       <div className="overlay-content">
         <div className="overlay-heading">
+          <div>
+          <img width="300px" src={Cover} alt="Mazada Logo"/>
+          </div>
           Welcome to Mazada Shopping app
         </div>
         <div className="overlay-message">Please login to continue</div>

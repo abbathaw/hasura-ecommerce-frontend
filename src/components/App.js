@@ -7,6 +7,7 @@ import {useCognito} from "./Cognito/react-cognito-spa";
 const App = ({ idToken }) => {
   const { loading, logout } = useCognito();
   const decodedJwt= jwtDecode(idToken);
+  console.log("decodedJWT", decodedJwt);
   if (loading) {
     return <div>Loading...</div>;
   }
