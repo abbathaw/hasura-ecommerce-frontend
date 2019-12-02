@@ -30,7 +30,7 @@ const Item = styled.div`
     & > * {
       background: white;
       border: 0;
-      font-family: 'radnika_next';
+      font-family: 'radnika_next', 'serif';
       font-size: 1rem;
       padding: 1rem;
     }

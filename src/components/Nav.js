@@ -9,8 +9,8 @@ const Nav = () => {
   
   return (
       <NavStyles>
-        <Link to="/items">
-          Items
+        <Link to="/shop">
+          Shop
         </Link>
         <Link to="/sell">
           Sell

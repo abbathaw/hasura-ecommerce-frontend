@@ -3,7 +3,7 @@ import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import Header from './Header';
 
 const theme = {
-  red: '#FF0000',
+  red: '#e49150',
   black: '#393939',
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
@@ -23,7 +23,7 @@ const Inner = styled.div`
   padding: 2rem;
 `;
 
-createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'radnika_next';
     src: local('radnikanext-medium-webfont'), url('../fonts/radnikanext-medium-webfont.woff2') format('woff2');
@@ -56,6 +56,7 @@ const Page = ({children}) => {
   return (
       <ThemeProvider theme={theme}>
         <StyledPage>
+          <GlobalStyle/>
           <Header/>
           <Inner>{children}</Inner>
         </StyledPage>
