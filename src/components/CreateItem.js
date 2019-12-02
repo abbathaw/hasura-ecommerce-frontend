@@ -4,6 +4,7 @@ import Form from './styles/Form';
 import {useMutation} from '@apollo/react-hooks';
 import Error from './ErrorMessage';
 import {useHistory} from 'react-router';
+import {ALL_ITEMS_QUERY} from './Items';
 
 const CREATE_ITEM_MUTATION = gql`
     mutation CREATE_ITEM_MUTATION(
@@ -23,6 +24,14 @@ const CREATE_ITEM_MUTATION = gql`
             }) {
             returning{
                 id
+                title
+                img
+                description
+                price
+                store_id
+                store {
+                    name
+                }
             }
         }
     }
@@ -78,18 +87,31 @@ const CreateItem = () => {
                     e.preventDefault();
                     const { title, description, price, image } =  addItem;
                     // call the mutation
-                    const res = await createItem({
+                     await createItem({
                       variables: {
                         title: title,
                         description: description,
                         price: price * 100,
                         image: image,
                         store_id: "47ba2388-da1c-40a5-aa4e-e218e7ecb6c9"
-                      }}).then(({data}) => {
+                      },
+                      update(cache, {data}) {
+                        if (!data) {
+                          return null;
+                        }
+                        const getExistingItems = cache.readQuery({query: ALL_ITEMS_QUERY});
+                        const existingItems = getExistingItems ? getExistingItems.items : [];
+                        const newItem = data.insert_items.returning[0];
+                        cache.writeQuery({
+                          query: ALL_ITEMS_QUERY,
+                          data: {items: [newItem, ...existingItems]}
+                        })
+                      }
+                     }).then(({data}) => {
                         setAddItem({title:'', description:'', price:0, image:''});
                         setLoading(false);
                         const newItem = data.insert_items.returning[0];
-                        history.push(`/item/${newItem.id}`)
+                        history.push(`/`)
                     }).catch(e => {
                       console.log("ERROR OCCURRED" ,e);
                       setError(e);
