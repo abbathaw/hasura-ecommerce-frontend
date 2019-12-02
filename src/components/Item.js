@@ -7,17 +7,6 @@ import {Link} from 'react-router-dom';
 
 const Item = (props) => {
 
-  
-//   id
-//   title
-//   img
-//   description
-//   price
-//   store_id
-//   store {
-//   name
-// }
-  
 
     const { item } = props;
     return (
@@ -27,8 +16,7 @@ const Item = (props) => {
           <Title>
             <Link
                 to={{
-                  pathname: '/item',
-                  query: { id: item.id },
+                  pathname: `/item/${item.id}`
                 }}
             >
               {item.title}

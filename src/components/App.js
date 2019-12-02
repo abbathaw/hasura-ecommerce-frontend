@@ -11,6 +11,7 @@ import {HttpLink} from 'apollo-link-http';
 import {ApolloProvider} from '@apollo/react-hooks';
 import Items from './Items';
 import CreateItem from './CreateItem';
+import SingleItem from './SingleItem';
 
 const createApolloClient = (idToken) => {
   return new ApolloClient({
@@ -48,6 +49,7 @@ const App = ({idToken}) => {
                 <Route path="/Sell">
                   <CreateItem />
                 </Route>
+                <Route path="/item/:id" component={SingleItem} />
               </Switch>
             </div>
           </Page>

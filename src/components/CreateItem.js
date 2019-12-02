@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import Form from './styles/Form';
 import {useMutation} from '@apollo/react-hooks';
 import Error from './ErrorMessage';
+import {useHistory} from 'react-router';
 
 const CREATE_ITEM_MUTATION = gql`
     mutation CREATE_ITEM_MUTATION(
@@ -66,7 +67,7 @@ const CreateItem = () => {
       image: file.secure_url,
     }));
   };
-
+  let history = useHistory();
   const [createItem] = useMutation(CREATE_ITEM_MUTATION);
     return (
               <Form
@@ -84,21 +85,16 @@ const CreateItem = () => {
                         price: price * 100,
                         image: image,
                         store_id: "47ba2388-da1c-40a5-aa4e-e218e7ecb6c9"
-                      }}).then(() => {
+                      }}).then(({data}) => {
                         setAddItem({title:'', description:'', price:0, image:''});
                         setLoading(false);
+                        const newItem = data.insert_items.returning[0];
+                        history.push(`/item/${newItem.id}`)
                     }).catch(e => {
                       console.log("ERROR OCCURRED" ,e);
                       setError(e);
                       setLoading(false);
                     });
-                    console.log(res);
-                    // change them to the single item page
-                    // TODO AFTER SUBMT
-                    // Router.push({
-                    //   pathname: '/item',
-                    //   query: { id: res.data.createItem.id },
-                    // });
                   }}
               >
                 <Error error={error} />
