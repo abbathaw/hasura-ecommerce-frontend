@@ -8,13 +8,14 @@ import NProgress from 'nprogress';
 
 const ALL_ITEMS_QUERY = gql`
     query ALL_ITEMS_QUERY {
-        items {
+        items(order_by: {created_at: desc}) {
             id
             title
             img
             description
             price
             store_id
+            created_at
             store {
                 name
             }
