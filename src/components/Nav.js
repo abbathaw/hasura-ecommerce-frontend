@@ -2,9 +2,14 @@ import React from 'react';
 import NavStyles from './styles/NavStyles';
 import {Link} from 'react-router-dom';
 import {useCognito} from './Cognito/react-cognito-spa';
+import {useCartContext} from './Header';
 
 const Nav = () => {
+  const {isOpen, setIsOpen} = useCartContext();
   
+  const handleToggle = () => {
+    setIsOpen(!isOpen)
+  };
   const { logout } = useCognito();
   
   return (
@@ -18,6 +23,11 @@ const Nav = () => {
         <Link to="/orders">
           Orders
         </Link>
+        <>
+          <button onClick={handleToggle}>
+            My Cart
+          </button>
+        </>
         <Link onClick={logout} to="/">
           Logout
         </Link>

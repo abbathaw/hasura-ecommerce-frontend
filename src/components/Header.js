@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import Mazada from '../images/mazada.png';
 import {Link} from 'react-router-dom';
 import Nav from './Nav';
 import 'nprogress/nprogress.css';
+import Cart from './Cart';
+import {useLocalStorage} from '../lib/useLocalStorage';
+import {CognitoContext} from './Cognito/react-cognito-spa';
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -39,17 +42,25 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Header = () => {
+const CartContext = React.createContext(null);
+export const useCartContext = () => useContext(CartContext);
 
+const Header = () => {
+  const [isOpen, setIsOpen] = useLocalStorage('isCartOpen', false);
   return (
       <StyledHeader>
-        <div className="bar">
-          <Logo>
-            <Link to="/"><img  width="300px" src={Mazada} alt="Mazada Logo"/></Link>
-          </Logo>
-          <Nav />
-        </div>
-        Cart
+        <CartContext.Provider value={{
+          isOpen,
+          setIsOpen
+        }}>
+          <div className="bar">
+            <Logo>
+              <Link to="/"><img  width="300px" src={Mazada} alt="Mazada Logo"/></Link>
+            </Logo>
+            <Nav />
+          </div>
+          <Cart/>
+        </CartContext.Provider>
       </StyledHeader>
     )
 };

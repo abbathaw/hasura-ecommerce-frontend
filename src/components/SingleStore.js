@@ -12,7 +12,6 @@ import {
 } from 'react-bootstrap';
 import {useHistory, useParams} from 'react-router';
 import {useQuery} from '@apollo/react-hooks';
-import Store from './Store';
 
 const SINGLE_STORE_QUERY = gql`
     query SINGLE_STORE_QUERY($id: uuid!) {
