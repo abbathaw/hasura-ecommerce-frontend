@@ -4,6 +4,7 @@ import ItemStyles from './styles/ItemStyles';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import {Link} from 'react-router-dom';
+import AddToCart from './AddToCart';
 
 const Item = (props) => {
 
@@ -35,7 +36,7 @@ const Item = (props) => {
             {/*>*/}
             {/*  Edit<span role="img" aria-label="pen"> ✏️</span>*/}
             {/*</Link>*/}
-            <button>Add To Cart</button>
+            <AddToCart id={item.id} />
             {/*<button>Delete </button>*/}
           </div>
         </ItemStyles>

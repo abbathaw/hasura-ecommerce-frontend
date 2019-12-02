@@ -67,7 +67,6 @@ const CreateStore = () => {
                 const getExistingStores = cache.readQuery({query: ALL_STORES_QUERY});
                 const existingStores = getExistingStores ? getExistingStores.user_store : [];
                 const newStore = data.insert_user_store.returning[0];
-                console.log("DO we get here", newStore);
                 cache.writeQuery({
                   query: ALL_STORES_QUERY,
                   data: {user_store: [newStore.store, ...existingStores]}

@@ -104,7 +104,6 @@ const CreateItem = () => {
                         const getExistingItems = cache.readQuery({query: ALL_ITEMS_QUERY});
                         const existingItems = getExistingItems ? getExistingItems.items : [];
                         const newItem = data.insert_items.returning[0];
-                        console.log("WHAT THE ISSUE", existingItems, newItem);
                         cache.writeQuery({
                           query: ALL_ITEMS_QUERY,
                           data: {items: [newItem, ...existingItems]}

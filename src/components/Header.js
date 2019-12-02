@@ -6,7 +6,6 @@ import Nav from './Nav';
 import 'nprogress/nprogress.css';
 import Cart from './Cart';
 import {useLocalStorage} from '../lib/useLocalStorage';
-import {CognitoContext} from './Cognito/react-cognito-spa';
 
 const Logo = styled.h1`
   font-size: 4rem;

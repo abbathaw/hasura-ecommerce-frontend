@@ -1,36 +1,107 @@
 import React from 'react';
-import { Mutation } from 'react-apollo';
+import {useMutation, useQuery} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import { CURRENT_USER_QUERY } from './User';
+import Error from './ErrorMessage';
+
+const GET_CURRENT_ITEM_IN_CART = gql`
+        query GET_CURRENT_ITEM_IN_CART($id: uuid!) {
+            cart_items(where: {item_id : {_eq: $id}}) {
+                id
+                item_id
+                quantity
+            }
+        }
+`;
 
 const ADD_TO_CART_MUTATION = gql`
-    mutation addToCart($id: ID!) {
-        addToCart(id: $id) {
-            id
-            quantity
+    mutation ADD_TO_CART_MUTATION($id: uuid!) {
+        insert_cart_items(objects: {item_id: $id}) {
+            returning {
+                id
+                item_id
+                quantity
+            }
         }
     }
 `;
 
-class AddToCart extends React.Component {
-  render() {
-    const { id } = this.props;
+const UPDATE_ITEM_IN_CART = gql`
+    mutation UPDATE_ITEM_IN_CART($cart_id: uuid!, $quantity: Int!) {
+        update_cart_items(where: {id : {_eq: $cart_id}}, _set: {quantity: $quantity}) {
+            returning {
+                id
+                item_id
+                quantity
+            }
+        }
+    }
+`;
+
+const AddToCart = (props) => {
+    const [isLoading, setLoading] = React.useState(false);
+    const { id } = props;
+    const [updateCart] = useMutation(UPDATE_ITEM_IN_CART);
+    const [addToCart] = useMutation(ADD_TO_CART_MUTATION);
+    const {error, data} = useQuery(GET_CURRENT_ITEM_IN_CART, {
+        variables: {id: id},
+    });
+    
+    console.log(`data for ${id}`, data);
+    
+    const handleClick = async () => {
+        setLoading(true);
+        if ( error ) {
+            console.error(error);
+        }
+    
+        const currentItemInCart = data.cart_items;
+        if (currentItemInCart &&  currentItemInCart.length > 0) {
+            console.log("FOUND ITEM", currentItemInCart);
+            const cart_id = currentItemInCart[0].id;
+            const quantity = currentItemInCart[0].quantity;
+            await updateCart({
+                variables: {
+                    cart_id,
+                    quantity:quantity + 1
+                },
+                refetchQueries: ["GET_CURRENT_ITEM_IN_CART"],
+                update(cache, {data}) {
+                    if ( !data ) {
+                        return null;
+                    }
+                }
+            }).then(({data}) => {
+                console.log("Item updated in cart", data);
+                setLoading(false);
+            }).catch(e => {
+                console.log("ERROR OCCURRED", e);
+                setLoading(false);
+            })
+        } else {
+            await addToCart({
+                    variables: {
+                        id: id
+                    }, refetchQueries: ["GET_CURRENT_ITEM_IN_CART"],
+                    update(cache, {data}) {
+                        if ( !data ) {
+                            return null;
+                        }
+                    }
+                }).then(({data}) => {
+                console.log("Item added to cart", data);
+                setLoading(false);
+            }).catch(e => {
+                console.log("ERROR OCCURRED", e);
+                setLoading(false);
+            })
+        }
+    };
     return (
-        <Mutation
-            mutation={ADD_TO_CART_MUTATION}
-            variables={{
-              id,
-            }}
-            refetchQueries={[{ query: CURRENT_USER_QUERY }]}
-        >
-          {(addToCart, { loading }) => (
-              <button disabled={loading} onClick={addToCart}>
-                Add{loading && 'ing'} To Cart 🛒
+              <button disabled={isLoading} onClick={handleClick}>
+                Add{isLoading && 'ing'} To Cart 🛒
               </button>
-          )}
-        </Mutation>
     );
-  }
+  
 }
 export default AddToCart;
 export { ADD_TO_CART_MUTATION };
