@@ -26,7 +26,7 @@ const Inner = styled.div`
 export const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'radnika_next';
-    src: local('radnikanext-medium-webfont'), url('../fonts/radnikanext-medium-webfont.woff2') format('woff2');
+    src:  url('/fonts/radnikanext-medium-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
   }

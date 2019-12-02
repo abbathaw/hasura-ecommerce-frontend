@@ -10,6 +10,7 @@ import {InMemoryCache} from 'apollo-cache-inmemory';
 import {HttpLink} from 'apollo-link-http';
 import {ApolloProvider} from '@apollo/react-hooks';
 import Items from './Items';
+import CreateItem from './CreateItem';
 
 const createApolloClient = (idToken) => {
   return new ApolloClient({
@@ -43,6 +44,9 @@ const App = ({idToken}) => {
                 </Route>
                 <Route path="/shop">
                   <Items />
+                </Route>
+                <Route path="/Sell">
+                  <CreateItem />
                 </Route>
               </Switch>
             </div>

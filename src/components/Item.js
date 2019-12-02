@@ -39,16 +39,16 @@ const Item = (props) => {
           <p>{item.description}</p>
           
           <div className="buttonList">
-            <Link
-                to={{
-                  pathname: 'update',
-                  query: { id: item.id },
-                }}
-            >
-              Edit<span role="img" aria-label="pen"> ✏️</span>
-            </Link>
+            {/*<Link*/}
+            {/*    to={{*/}
+            {/*      pathname: 'update',*/}
+            {/*      query: { id: item.id },*/}
+            {/*    }}*/}
+            {/*>*/}
+            {/*  Edit<span role="img" aria-label="pen"> ✏️</span>*/}
+            {/*</Link>*/}
             <button>Add To Cart</button>
-            <button>Delete </button>
+            {/*<button>Delete </button>*/}
           </div>
         </ItemStyles>
     );
