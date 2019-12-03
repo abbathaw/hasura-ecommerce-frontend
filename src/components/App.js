@@ -15,14 +15,20 @@ import Stores from './Stores';
 import SingleStore from './SingleStore';
 import CreateStore from './CreateStore';
 import CreateItem from './CreateItem';
+import {WebSocketLink} from 'apollo-link-ws';
 
 const createApolloClient = (idToken) => {
   return new ApolloClient({
-    link: new HttpLink({
-      uri: process.env.REACT_APP_HASURA_ENDPOINT,
-      headers: {
-        Authorization: `Bearer ${idToken}`,
-      },
+    link: new WebSocketLink({
+      uri: process.env.REACT_APP_HASURA_ENDPOINT, //change url to ws instead of http when using subscription
+      options: {
+        reconnect: true,
+        connectionParams: {
+          headers: {
+            Authorization: `Bearer ${idToken}`,
+          },
+        }
+      }
     }),
     cache: new InMemoryCache(),
   });

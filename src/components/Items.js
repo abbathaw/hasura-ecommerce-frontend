@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useQuery} from '@apollo/react-hooks';
+import {useSubscription} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import Item from './Item';
@@ -7,7 +7,7 @@ import {useLocation} from 'react-router';
 import NProgress from 'nprogress';
 
 const ALL_ITEMS_QUERY = gql`
-    query ALL_ITEMS_QUERY {
+    subscription ALL_ITEMS_QUERY {
         items(order_by: {created_at: desc}) {
             id
             title
@@ -49,7 +49,7 @@ const Items =() => {
     NProgress.start();
   }
   
-  const { loading, error, data } = useQuery(ALL_ITEMS_QUERY);
+  const { loading, error, data } = useSubscription(ALL_ITEMS_QUERY);
   
   if (loading) return <p>Loading...</p>;
   if (error) {

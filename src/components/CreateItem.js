@@ -96,18 +96,6 @@ const CreateItem = () => {
                         price: price * 100,
                         image: image,
                         store_id: storeId
-                      },
-                      update(cache, {data}) {
-                        if (!data) {
-                          return null;
-                        }
-                        const getExistingItems = cache.readQuery({query: ALL_ITEMS_QUERY});
-                        const existingItems = getExistingItems ? getExistingItems.items : [];
-                        const newItem = data.insert_items.returning[0];
-                        cache.writeQuery({
-                          query: ALL_ITEMS_QUERY,
-                          data: {items: [newItem, ...existingItems]}
-                        })
                       }
                      }).then(({data}) => {
                         setAddItem({title:'', description:'', price:0, image:''});

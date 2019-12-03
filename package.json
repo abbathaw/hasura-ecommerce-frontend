@@ -13,6 +13,7 @@
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link-http": "^1.5.16",
+    "apollo-link-ws": "^1.0.19",
     "aws-sdk": "^2.570.0",
     "bootstrap": "^4.3.1",
     "graphql": "^14.5.8",
@@ -28,7 +29,8 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-router-prop-types": "^1.0.4",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "subscriptions-transport-ws": "^0.9.16"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^3.1.0",
