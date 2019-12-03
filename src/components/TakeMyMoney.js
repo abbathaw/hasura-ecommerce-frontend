@@ -30,7 +30,6 @@ const TakeMyMoney =({children, cart, total}) => {
         token: res.id,
       },
     }).then(({data})=> {
-      console.log("data received from order", data);
       NProgress.done();
       history.push(`/order/${data.createOrder.id}`);
     })

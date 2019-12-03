@@ -1,5 +1,5 @@
 import React from 'react';
-import jwtDecode from 'jwt-decode';
+// import jwtDecode from 'jwt-decode';
 import {useCognito} from './Cognito/react-cognito-spa';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Page from './Page';
@@ -37,10 +37,8 @@ const createApolloClient = (idToken) => {
 
 const App = ({idToken}) => {
   const {loading} = useCognito();
-  console.log("idtoken", idToken);
-  const decodedJwt = jwtDecode(idToken);
+  // const decodedJwt = jwtDecode(idToken);
   const client = createApolloClient(idToken);
-  console.log('decodedJWT', decodedJwt);
   if ( loading ) {
     return <Loading/>;
   }
@@ -59,12 +57,14 @@ const App = ({idToken}) => {
                 <Route path="/Sell">
                   <Stores />
                 </Route>
+                <Route path="/orders">
+                  <Orders />
+                </Route>
                 <Route path="/item/:id" component={SingleItem} />
                 <Route path="/createStore" component={CreateStore} />
                 <Route path="/store/:storeId/createItem" component={CreateItem} />
                 <Route path="/store/:id" component={SingleStore} />
-                <Route path="/orders/:id" component={SingleOrder} />
-                <Route path="/orders" component={Orders} />
+                <Route path="/order/:id" component={SingleOrder} />
               </Switch>
             </div>
           </Page>

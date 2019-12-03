@@ -36,7 +36,6 @@ const RemoveFromCart =({id}) => {
                     variables: {id: id},
                     refetchQueries: ["GET_CURRENT_ITEM_IN_CART"],
                   }).then(({data}) => {
-                    console.log("cart Item deleted", data);
                     setLoading(false)
                   }).catch(err => {
                     console.log(err.message);

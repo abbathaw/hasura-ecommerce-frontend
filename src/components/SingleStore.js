@@ -71,7 +71,7 @@ const SingleStore = () => {
   };
   
   const store = data.stores_by_pk;
-  console.log('Store', store);
+  
   return (
       <Container style={containerStyle} >
           <Helmet>

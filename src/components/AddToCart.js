@@ -68,7 +68,6 @@ const AddToCart = (props) => {
                     }
                 }
             }).then(({data}) => {
-                console.log("Item updated in cart", data);
                 setLoading(false);
             }).catch(e => {
                 console.log("ERROR OCCURRED", e);
@@ -85,7 +84,6 @@ const AddToCart = (props) => {
                         }
                     }
                 }).then(({data}) => {
-                console.log("Item added to cart", data);
                 setLoading(false);
             }).catch(e => {
                 console.log("ERROR OCCURRED", e);

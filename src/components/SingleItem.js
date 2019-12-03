@@ -62,7 +62,7 @@ const SingleItem = () => {
   }
     if ( !data.items_by_pk ) return <p>No Item Found for {id}</p>;
     const item = data.items_by_pk;
-    console.log("ITEM", item);
+    
     return (
         <SingleItemStyles>
           <Helmet>

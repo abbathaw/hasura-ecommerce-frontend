@@ -51,7 +51,6 @@ const Cart = () => {
   const handleToggle = () => {
     setIsOpen(!isOpen)
   };
-  console.log("cartDATA", cartData);
   const cartLength = cartData && cartData.cart_items ? getCartSize(cartData.cart_items) : 0;
   const cart = cartData && cartData.cart_items ? cartData.cart_items : [];
   setCartCount(cartLength);
