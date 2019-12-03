@@ -12,6 +12,7 @@ import {
 } from 'react-bootstrap';
 import {useHistory, useParams} from 'react-router';
 import {useQuery} from '@apollo/react-hooks';
+import formatMoney from '../lib/formatMoney';
 
 const SINGLE_STORE_QUERY = gql`
     query SINGLE_STORE_QUERY($id: uuid!) {
@@ -105,7 +106,7 @@ const StoreLayout = ({store}) => {
           <Col lg={true}>
             <Card>
               <Card.Body>
-                <Card.Title>Items {store.items_aggregate.aggregate.count}</Card.Title>
+                <Card.Title>Items  -  {store.items_aggregate.aggregate.count}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
                   Current Items in your store
                 </Card.Subtitle>
@@ -121,13 +122,14 @@ const StoreLayout = ({store}) => {
           <Col lg={true}>
             <Card>
               <Card.Body>
-                <Card.Title>Orders {store.order_items_aggregate.aggregate.count}</Card.Title>
+                <Card.Title>Orders  - {store.order_items_aggregate.aggregate.count}
+                </Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
-                  Current available orders
+                  Total Sales {formatMoney(store.order_items.reduce(((accum, item)=> accum+item.price),0))}
                 </Card.Subtitle>
                 <ListGroup>
                   {/*<ListGroup.Item>{store.order_items}</ListGroup.Item>*/}
-                  {store.order_items.map(order => <ListGroup.Item key={order.id} eventKey={order.id} > {order.title} </ListGroup.Item>)}
+                  {store.order_items.map(order => <ListGroup.Item key={order.id} eventKey={order.id} > <h4> {order.title}  (qty: {order.quantity}) </h4>  <p>Total: {formatMoney(order.price)}</p></ListGroup.Item>)}
                 </ListGroup>
               </Card.Body>
               <Card.Footer className="text-muted">
