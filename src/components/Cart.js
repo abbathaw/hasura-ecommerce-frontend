@@ -41,11 +41,18 @@ const Cart = () => {
         </>
         )
   }
+  
+  const getCartSize = (itemsArray) => {
+    return itemsArray.reduce((accum, item) => {
+      return accum + item.quantity
+    },0)
+  };
+  
   const handleToggle = () => {
     setIsOpen(!isOpen)
   };
   console.log("cartDATA", cartData);
-  const cartLength = cartData && cartData.cart_items &&  cartData.cart_items.length ? cartData.cart_items.length : 0;
+  const cartLength = cartData && cartData.cart_items ? getCartSize(cartData.cart_items) : 0;
   const cart = cartData && cartData.cart_items ? cartData.cart_items : [];
   setCartCount(cartLength);
   const cartWithItems = cart.map( cartItem => {
