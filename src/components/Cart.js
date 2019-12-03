@@ -10,7 +10,7 @@ import calcTotalPrice from '../lib/calcTotalPrice';
 import formatMoney from '../lib/formatMoney';
 import {GET_ALL_ITEMS_IN_CART, useCartContext} from './Header';
 import Error from './ErrorMessage';
-// import TakeMyMoney from './TakeMyMoney';
+import TakeMyMoney from './TakeMyMoney';
 
 
 const CART_ITEMS = gql`
@@ -75,7 +75,9 @@ const Cart = () => {
         <footer>
           <p>{formatMoney(calcTotalPrice(cartWithItems))}</p>
           {cartLength > 0 && (
-              <SickButton>Checkout</SickButton>
+              <TakeMyMoney cart={cartWithItems} total={cartLength}>
+                <SickButton>Checkout</SickButton>
+              </TakeMyMoney>
           )}
         </footer>
       </CartStyles>

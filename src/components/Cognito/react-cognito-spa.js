@@ -97,6 +97,7 @@ export const CognitoProvider = ({
       isAuthenticated && user ? <CognitoContext.Provider
           value={{
             isAuthenticated,
+            idToken,
             user,
             loading,
             loginWithRedirect: () => cognitoClient.getSession(),
