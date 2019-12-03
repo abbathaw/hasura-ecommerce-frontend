@@ -1,5 +1,6 @@
 {
-  "name": "react-apollo-todo",
+  "homepage": "http://abbathaw.github.io/mazada",
+  "name": "Mazada",
   "version": "0.1.0",
   "engines": {
     "node": "8.9.1"
@@ -36,6 +37,7 @@
   "devDependencies": {
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react-hooks": "^2.0.1",
+    "gh-pages": "^2.1.1",
     "husky": "^1.0.0-rc.15",
     "lint-staged": "^7.3.0",
     "prettier": "1.14.3",
@@ -45,6 +47,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint src/**/*.js --fix"
