@@ -36,8 +36,8 @@ const createApolloClient = (idToken) => {
 };
 
 const App = ({idToken}) => {
-  console.log("ID TOKEN", `Bearer ${idToken}`);
   const {loading} = useCognito();
+  console.log("idtoken", idToken);
   const decodedJwt = jwtDecode(idToken);
   const client = createApolloClient(idToken);
   console.log('decodedJWT', decodedJwt);

@@ -3,7 +3,8 @@ import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import Header from './Header';
 
 const theme = {
-  red: '#e49150',
+  red: '#2e8ca2',
+  secondColor:'#dc3535',
   black: '#393939',
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',

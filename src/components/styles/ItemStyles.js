@@ -28,7 +28,7 @@ const Item = styled.div`
     grid-gap: 1px;
     background: ${props => props.theme.lightgrey};
     & > * {
-      background: #F57224;
+      background: #fdc6ad;
       border: 0;
       font-family: 'radnika_next', 'serif';
       font-size: 30px;

@@ -4,7 +4,6 @@ import {useMutation} from '@apollo/react-hooks';
 import NProgress from 'nprogress';
 import gql from 'graphql-tag';
 import calcTotalPrice from '../lib/calcTotalPrice';
-import Error from './ErrorMessage';
 import {useHistory} from 'react-router';
 import {useCognito} from './Cognito/react-cognito-spa';
 import jwtDecode from 'jwt-decode';
@@ -25,7 +24,6 @@ const TakeMyMoney =({children, cart, total}) => {
   const [sendOrder] = useMutation(CREATE_ORDER_MUTATION);
   const onToken = async (res) => {
     NProgress.start();
-    console.log("res", res);
     // manually call the mutation once we have the stripe token
     await sendOrder({
       variables: {
@@ -37,6 +35,7 @@ const TakeMyMoney =({children, cart, total}) => {
       history.push(`/order/${data.createOrder.id}`);
     })
     .catch(err => {
+      NProgress.done();
       console.error(err.message);
     });
     
