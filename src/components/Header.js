@@ -6,6 +6,7 @@ import Nav from './Nav';
 import 'nprogress/nprogress.css';
 import Cart from './Cart';
 import {useLocalStorage} from '../lib/useLocalStorage';
+import gql from 'graphql-tag';
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -41,16 +42,29 @@ const StyledHeader = styled.header`
   }
 `;
 
+const GET_ALL_ITEMS_IN_CART = gql`
+    subscription GET_ALL_ITEMS_IN_CART {
+        cart_items {
+            id
+            item_id
+            quantity
+        }
+    }
+`;
+
 const CartContext = React.createContext(null);
 export const useCartContext = () => useContext(CartContext);
 
 const Header = () => {
   const [isOpen, setIsOpen] = useLocalStorage('isCartOpen', false);
+  const [cartCount, setCartCount] = useLocalStorage('isCartOpen', false);
   return (
       <StyledHeader>
         <CartContext.Provider value={{
           isOpen,
-          setIsOpen
+          setIsOpen,
+          cartCount,
+          setCartCount
         }}>
           <div className="bar">
             <Logo>
@@ -66,3 +80,4 @@ const Header = () => {
 
 
 export default Header;
+export { GET_ALL_ITEMS_IN_CART };

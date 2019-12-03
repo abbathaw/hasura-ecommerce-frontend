@@ -28,10 +28,10 @@ const Item = styled.div`
     grid-gap: 1px;
     background: ${props => props.theme.lightgrey};
     & > * {
-      background: white;
+      background: #F57224;
       border: 0;
       font-family: 'radnika_next', 'serif';
-      font-size: 1rem;
+      font-size: 30px;
       padding: 1rem;
     }
   }

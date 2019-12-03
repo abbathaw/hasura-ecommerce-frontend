@@ -5,7 +5,6 @@ import {useMutation} from '@apollo/react-hooks';
 import Error from './ErrorMessage';
 import {useHistory} from 'react-router';
 import {useParams} from 'react-router';
-import {ALL_ITEMS_QUERY} from './Items';
 
 const CREATE_ITEM_MUTATION = gql`
     mutation CREATE_ITEM_MUTATION(

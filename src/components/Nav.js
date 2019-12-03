@@ -3,9 +3,10 @@ import NavStyles from './styles/NavStyles';
 import {Link} from 'react-router-dom';
 import {useCognito} from './Cognito/react-cognito-spa';
 import {useCartContext} from './Header';
+import CartCount from './CartCount';
 
 const Nav = () => {
-  const {isOpen, setIsOpen} = useCartContext();
+  const {isOpen, setIsOpen, cartCount} = useCartContext();
   
   const handleToggle = () => {
     setIsOpen(!isOpen)
@@ -25,7 +26,7 @@ const Nav = () => {
         </Link>
         <>
           <button onClick={handleToggle}>
-            My Cart
+            My Cart <CartCount count={cartCount} />
           </button>
         </>
         <Link onClick={logout} to="/">

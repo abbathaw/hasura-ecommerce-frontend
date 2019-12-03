@@ -20,28 +20,29 @@ const CartItemStyles = styled.li`
 `;
 
 const CartItem = ({ cartItem }) => {
-  // first check if that item exists
-  if (!cartItem.item)
+
+  const item = cartItem.item;
+  if (!item)
     return (
         <CartItemStyles>
           <p>This Item has been removed</p>
-          <RemoveFromCart id={cartItem.id} />
+          <RemoveFromCart id={cartItem.cartItemId} />
         </CartItemStyles>
     );
   return (
       <CartItemStyles>
-        <img width="100" src={cartItem.item.image} alt={cartItem.item.title} />
+        <img width="100" src={item.img} alt={item.title} />
         <div className="cart-item-details">
-          <h3>{cartItem.item.title}</h3>
+          <h3>{item.title}</h3>
           <p>
-            {formatMoney(cartItem.item.price * cartItem.quantity)}
+            {formatMoney(item.price * cartItem.quantity)}
             {' - '}
             <em>
-              {cartItem.quantity} &times; {formatMoney(cartItem.item.price)} each
+              {cartItem.quantity} &times; {formatMoney(item.price)} each
             </em>
           </p>
         </div>
-        <RemoveFromCart id={cartItem.id} />
+        <RemoveFromCart id={cartItem.cartItemId} />
       </CartItemStyles>
   );
 };

@@ -20,12 +20,16 @@ const ErrorStyles = styled.div`
 
 const DisplayError = ({ error }) => {
   if (!error || !error.message) return null;
+  let msg = error.message;
+  if ((msg).includes("JWTExpired")) {
+    msg = "Please refresh the tab to login again"
+  }
   if (error.networkError && error.networkError.result && error.networkError.result.errors.length) {
     return error.networkError.result.errors.map((error, i) => (
       <ErrorStyles key={i}>
         <p data-test="graphql-error">
           <strong>Shoot!</strong>
-          {error.message.replace('GraphQL error: ', '')}
+          {msg.replace('GraphQL error: ', '')}
         </p>
       </ErrorStyles>
     ));
@@ -34,7 +38,7 @@ const DisplayError = ({ error }) => {
     <ErrorStyles>
       <p data-test="graphql-error">
         <strong>Shoot!</strong>
-        {error.message.replace('GraphQL error: ', '')}
+        {msg.replace('GraphQL error: ', '')}
       </p>
     </ErrorStyles>
   );

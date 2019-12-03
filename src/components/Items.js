@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Item from './Item';
 import {useLocation} from 'react-router';
 import NProgress from 'nprogress';
+import Error from './ErrorMessage';
 
 const ALL_ITEMS_QUERY = gql`
     subscription ALL_ITEMS_QUERY {
@@ -54,7 +55,7 @@ const Items =() => {
   if (loading) return <p>Loading...</p>;
   if (error) {
     console.error(error);
-    return <div>Error!</div>;
+    return <Error error={error} />;
   }
   
   return (

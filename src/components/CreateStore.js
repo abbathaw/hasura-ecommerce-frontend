@@ -76,7 +76,6 @@ const CreateStore = () => {
               setAddStore({name:'', description:''});
               setLoading(false);
               const newStore = data.insert_user_store.returning[0];
-              console.log("what is new Stpre", newStore);
               history.push(`/store/${newStore.store.id}`)
             }).catch(e => {
               console.log("ERROR OCCURRED" ,e);

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import Error from './ErrorMessage';
+import styled from 'styled-components';
 
 const GET_CURRENT_ITEM_IN_CART = gql`
         query GET_CURRENT_ITEM_IN_CART($id: uuid!) {
@@ -38,6 +38,7 @@ const UPDATE_ITEM_IN_CART = gql`
 `;
 
 const AddToCart = (props) => {
+    // const { cartItems } = useCartContext();
     const [isLoading, setLoading] = React.useState(false);
     const { id } = props;
     const [updateCart] = useMutation(UPDATE_ITEM_IN_CART);
@@ -45,8 +46,6 @@ const AddToCart = (props) => {
     const {error, data} = useQuery(GET_CURRENT_ITEM_IN_CART, {
         variables: {id: id},
     });
-    
-    console.log(`data for ${id}`, data);
     
     const handleClick = async () => {
         setLoading(true);
@@ -56,7 +55,6 @@ const AddToCart = (props) => {
     
         const currentItemInCart = data.cart_items;
         if (currentItemInCart &&  currentItemInCart.length > 0) {
-            console.log("FOUND ITEM", currentItemInCart);
             const cart_id = currentItemInCart[0].id;
             const quantity = currentItemInCart[0].quantity;
             await updateCart({
@@ -101,7 +99,6 @@ const AddToCart = (props) => {
                 Add{isLoading && 'ing'} To Cart 🛒
               </button>
     );
-  
 }
 export default AddToCart;
 export { ADD_TO_CART_MUTATION };
