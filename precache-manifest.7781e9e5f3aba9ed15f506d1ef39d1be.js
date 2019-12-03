@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dfe6a6e8cc39cc6649b89cef2ec61a8e",
+    "revision": "fc5a726827c0591f12257738557e13fb",
     "url": "/mazada/index.html"
   },
   {
-    "revision": "c8308ddd6516f72b8e84",
+    "revision": "9221c73b01c0d71ec0f7",
     "url": "/mazada/static/css/2.e6157a56.chunk.css"
   },
   {
-    "revision": "30439906efb96b3478fd",
+    "revision": "21004dc0f9e4a695bdae",
     "url": "/mazada/static/css/main.8d1bcb37.chunk.css"
   },
   {
-    "revision": "c8308ddd6516f72b8e84",
-    "url": "/mazada/static/js/2.7243fd6e.chunk.js"
+    "revision": "9221c73b01c0d71ec0f7",
+    "url": "/mazada/static/js/2.8de23c54.chunk.js"
   },
   {
-    "revision": "30439906efb96b3478fd",
-    "url": "/mazada/static/js/main.8245437e.chunk.js"
+    "revision": "21004dc0f9e4a695bdae",
+    "url": "/mazada/static/js/main.38fe3aa2.chunk.js"
   },
   {
     "revision": "36291af46e61f3247eed",
