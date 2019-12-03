@@ -57,7 +57,7 @@ export const useCartContext = () => useContext(CartContext);
 
 const Header = () => {
   const [isOpen, setIsOpen] = useLocalStorage('isCartOpen', false);
-  const [cartCount, setCartCount] = useLocalStorage('isCartOpen', false);
+  const [cartCount, setCartCount] = useLocalStorage('cartCount', false);
   return (
       <StyledHeader>
         <CartContext.Provider value={{

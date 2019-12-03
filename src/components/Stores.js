@@ -30,6 +30,10 @@ const StoresList = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin: 80px auto;
   min-height: 200px;
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      /* OR, change value to 'none' */
+  }
 `;
 
 const Stores =() => {

@@ -42,6 +42,16 @@ const CartStyles = styled.div`
     list-style: none;
     overflow: scroll;
   }
+  @media (max-width: 600px) {
+    width: 100%;
+    min-width: 300px;
+    footer {
+      p {
+        font-size: 2rem;
+      }
+    }
+      /* OR, change value to 'none' */
+  }
 `;
 
 export default CartStyles;

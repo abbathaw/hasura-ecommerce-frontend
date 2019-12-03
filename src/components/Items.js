@@ -34,6 +34,10 @@ const ItemsList = styled.div`
   grid-gap: 60px;
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
+  @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      /* OR, change value to 'none' */
+  }
 `;
 
 const Items =() => {

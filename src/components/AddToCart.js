@@ -1,7 +1,6 @@
 import React from 'react';
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import styled from 'styled-components';
 
 const GET_CURRENT_ITEM_IN_CART = gql`
         query GET_CURRENT_ITEM_IN_CART($id: uuid!) {
