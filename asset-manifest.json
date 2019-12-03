@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/mazada/static/css/main.8d1bcb37.chunk.css",
+    "main.js": "/mazada/static/js/main.ee0b2a03.chunk.js",
+    "main.js.map": "/mazada/static/js/main.ee0b2a03.chunk.js.map",
+    "runtime-main.js": "/mazada/static/js/runtime-main.2f9bd110.js",
+    "runtime-main.js.map": "/mazada/static/js/runtime-main.2f9bd110.js.map",
+    "static/css/2.e6157a56.chunk.css": "/mazada/static/css/2.e6157a56.chunk.css",
+    "static/js/2.3541fad0.chunk.js": "/mazada/static/js/2.3541fad0.chunk.js",
+    "static/js/2.3541fad0.chunk.js.map": "/mazada/static/js/2.3541fad0.chunk.js.map",
+    "index.html": "/mazada/index.html",
+    "precache-manifest.e3fc4aac7aa5a9c391736454b8862673.js": "/mazada/precache-manifest.e3fc4aac7aa5a9c391736454b8862673.js",
+    "service-worker.js": "/mazada/service-worker.js",
+    "static/css/2.e6157a56.chunk.css.map": "/mazada/static/css/2.e6157a56.chunk.css.map",
+    "static/css/main.8d1bcb37.chunk.css.map": "/mazada/static/css/main.8d1bcb37.chunk.css.map",
+    "static/media/cover.png": "/mazada/static/media/cover.68f1f977.png",
+    "static/media/loading.svg": "/mazada/static/media/loading.c5590569.svg",
+    "static/media/mazada.png": "/mazada/static/media/mazada.2ee1745b.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2f9bd110.js",
+    "static/css/2.e6157a56.chunk.css",
+    "static/js/2.3541fad0.chunk.js",
+    "static/css/main.8d1bcb37.chunk.css",
+    "static/js/main.ee0b2a03.chunk.js"
+  ]
+}
