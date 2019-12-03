@@ -13,12 +13,7 @@ const CREATE_ORDER_MUTATION = gql`
     mutation createOrder($token: String!) {
         createOrder(token: $token) {
             id
-            charge
-            total
-            items {
-                id
-                title
-            }
+            status
         }
     }
 `;
@@ -27,19 +22,24 @@ const TakeMyMoney =({children, cart, total}) => {
   let history = useHistory();
   const {idToken} = useCognito();
   const decodedJwt = jwtDecode(idToken);
-  // const [sendOrder] = useMutation(CREATE_ORDER_MUTATION);
+  const [sendOrder] = useMutation(CREATE_ORDER_MUTATION);
   const onToken = async (res) => {
-    // NProgress.start();
+    NProgress.start();
     console.log("res", res);
     // manually call the mutation once we have the stripe token
-    // const order = await sendOrder({
-    //   variables: {
-    //     token: res.id,
-    //   },
-    // }).catch(err => {
-    //   alert(err.message);
-    // });
-    // history.push(`/order/${order.data.createOrder.id}`);
+    await sendOrder({
+      variables: {
+        token: res.id,
+      },
+    }).then(({data})=> {
+      console.log("data received from order", data);
+      NProgress.done();
+      history.push(`/order/${data.createOrder.id}`);
+    })
+    .catch(err => {
+      console.error(err.message);
+    });
+    
   };
 
     return (

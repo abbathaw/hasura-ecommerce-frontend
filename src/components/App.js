@@ -15,6 +15,8 @@ import SingleStore from './SingleStore';
 import CreateStore from './CreateStore';
 import CreateItem from './CreateItem';
 import {WebSocketLink} from 'apollo-link-ws';
+import SingleOrder from './SingleOrder';
+import Orders from './Orders';
 
 const createApolloClient = (idToken) => {
   return new ApolloClient({
@@ -61,6 +63,8 @@ const App = ({idToken}) => {
                 <Route path="/createStore" component={CreateStore} />
                 <Route path="/store/:storeId/createItem" component={CreateItem} />
                 <Route path="/store/:id" component={SingleStore} />
+                <Route path="/orders/:id" component={SingleOrder} />
+                <Route path="/orders" component={Orders} />
               </Switch>
             </div>
           </Page>

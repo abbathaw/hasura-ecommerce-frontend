@@ -30,7 +30,8 @@
     "react-router-dom": "^5.0.1",
     "react-router-prop-types": "^1.0.4",
     "styled-components": "^4.4.1",
-    "subscriptions-transport-ws": "^0.9.16"
+    "subscriptions-transport-ws": "^0.9.16",
+    "date-fns": "latest"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^3.1.0",
