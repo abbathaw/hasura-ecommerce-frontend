@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/mazada/precache-manifest.e3fc4aac7aa5a9c391736454b8862673.js"
+  "/mazada/precache-manifest.c354818c29d532cf954456d40cacb023.js"
 );
 
 self.addEventListener('message', (event) => {
