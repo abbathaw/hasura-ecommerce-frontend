@@ -1,5 +1,5 @@
 {
-  "homepage": "http://abbathaw.github.io/mazada",
+  "homepage": "http://localhost:3000",
   "name": "Mazada",
   "version": "0.1.0",
   "engines": {
