@@ -125,11 +125,11 @@ const StoreLayout = ({store}) => {
                 <Card.Title>Orders  - {store.order_items_aggregate.aggregate.count}
                 </Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
-                  Total Sales {formatMoney(store.order_items.reduce(((accum, item)=> accum+item.price),0))}
+                  Total Sales {formatMoney(store.order_items.reduce(((accum, item)=> accum+(item.price * item.quantity)),0))}
                 </Card.Subtitle>
                 <ListGroup>
                   {/*<ListGroup.Item>{store.order_items}</ListGroup.Item>*/}
-                  {store.order_items.map(order => <ListGroup.Item key={order.id} eventKey={order.id} > <h4> {order.title}  (qty: {order.quantity}) </h4>  <p>Total: {formatMoney(order.price)}</p></ListGroup.Item>)}
+                  {store.order_items.map(order => <ListGroup.Item key={order.id} eventKey={order.id} > <h4> {order.title}  (qty: {order.quantity}) </h4>  <p>Total: {formatMoney(order.price * order.quantity)}</p></ListGroup.Item>)}
                 </ListGroup>
               </Card.Body>
               <Card.Footer className="text-muted">
